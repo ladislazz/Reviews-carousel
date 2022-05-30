@@ -7,14 +7,26 @@ const Review = () => {
 
   const { id, name, job, image, text } = people[index];
 
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    } else if (number < 0) {
+      return people.length - 1;
+    } else return number;
+  };
+
   const nextPerson = () => {
-    const newIndex = index + 1;
-    setIndex(newIndex);
+    setIndex((index) => {
+      const newIndex = index + 1;
+      return checkNumber(newIndex);
+    });
   };
 
   const prevPerson = () => {
-    const newIndex = index - 1;
-    setIndex(newIndex);
+    setIndex((index) => {
+      const newIndex = index - 1;
+      return checkNumber(newIndex);
+    });
   };
 
   return (
